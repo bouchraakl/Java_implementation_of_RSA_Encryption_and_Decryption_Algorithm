@@ -33,4 +33,14 @@ public class RSA {
 
     }
 
+    private static String descriptografar(byte[] messageEncripted, PublicKey publicKey) throws Exception {
+
+        Cipher cipher = Cipher.getInstance("RSA");
+        cipher.init(Cipher.DECRYPT_MODE, publicKey);
+
+        byte[] bytesDescripted = cipher.doFinal(messageEncripted);
+
+        return new String(bytesDescripted);
+    }
+
 }
